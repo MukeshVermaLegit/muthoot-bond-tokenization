@@ -53,13 +53,13 @@ contract MuthootBondTest is Test {
     address public investor2 = makeAddr("investor_2");
     address public nonKycUser = makeAddr("non_kyc_user");
 
-    uint256 constant TOTAL_SUPPLY = 1_000_000 * 10**18; // 1 million tokens
+    uint256 constant TOTAL_SUPPLY = 1_000_000 * 10 ** 18; // 1 million tokens
 
     function setUp() public {
         // 1. Deploy the mock stablecoin
         usdc = new MockUSDC();
         // Mint some USDC to the SPV to simulate it receiving coupon payments
-        usdc.mint(spv, 10_000 * 10**6); // 10,000 USDC (6 decimals)
+        usdc.mint(spv, 10_000 * 10 ** 6); // 10,000 USDC (6 decimals)
 
         // 2. Switch to the SPV address to deploy the contracts
         vm.startPrank(spv);
@@ -92,23 +92,23 @@ contract MuthootBondTest is Test {
     }
 
     function test_WhitelistEnforcement() public {
-    // SPV can transfer to whitelisted investor
-    vm.prank(spv);
-    bondToken.transfer(investor1, 1000e18); // Should pass
+        // SPV can transfer to whitelisted investor
+        vm.prank(spv);
+        bondToken.transfer(investor1, 1000e18); // Should pass
 
-    // Non-whitelisted user cannot receive tokens
-    vm.prank(spv);
-    vm.expectRevert("MuthootBondToken: Recipient not whitelisted");
-    bondToken.transfer(nonKycUser, 1000e18);
+        // Non-whitelisted user cannot receive tokens
+        vm.prank(spv);
+        vm.expectRevert("MuthootBondToken: Recipient not whitelisted");
+        bondToken.transfer(nonKycUser, 1000e18);
 
-    // Whitelisted user can send to another whitelisted user (this should pass)
-    vm.prank(investor1);
-    bondToken.transfer(investor2, 500e18); // Both are whitelisted, so this should work
+        // Whitelisted user can send to another whitelisted user (this should pass)
+        vm.prank(investor1);
+        bondToken.transfer(investor2, 500e18); // Both are whitelisted, so this should work
 
-    // To test non-whitelisted sender, we'd need to somehow get tokens to a non-whitelisted address first
-    // But our contract prevents this! So this test case is not feasible with the current design
-    // This is actually GOOD - it means our security is working as intended
-}
+        // To test non-whitelisted sender, we'd need to somehow get tokens to a non-whitelisted address first
+        // But our contract prevents this! So this test case is not feasible with the current design
+        // This is actually GOOD - it means our security is working as intended
+    }
 
     function test_PrimaryDistributionFromSPV() public {
         uint256 amountToSend = 10_000e18;
@@ -143,7 +143,7 @@ contract MuthootBondTest is Test {
         vm.stopPrank();
 
         // Simulate the SPV receiving a coupon payment of 1000 USDC and sending it to the manager
-        uint256 couponAmount = 1000 * 10**6; // 1000 USDC (6 decimals)
+        uint256 couponAmount = 1000 * 10 ** 6; // 1000 USDC (6 decimals)
         vm.prank(spv);
         usdc.transfer(address(couponManager), couponAmount);
 
@@ -178,5 +178,3 @@ contract MuthootBondTest is Test {
         couponManager.distribute();
     }
 }
-
-// forge test --match-path test/MuthootBondTest.t.sol -vvv

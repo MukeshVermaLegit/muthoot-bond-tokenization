@@ -26,10 +26,10 @@ contract MuthootBondToken is ERC20, Ownable {
      * @param _spvTreasury The address of the SPV's wallet that will initially hold all tokens.
      * @param _totalSupply The total number of tokens to mint, representing the total bond value.
      */
-    constructor(
-        address _spvTreasury,
-        uint256 _totalSupply
-    ) ERC20("Muthoot Finance Oct 2026 Bond", "MFRL-OCT26") Ownable(_spvTreasury) {
+    constructor(address _spvTreasury, uint256 _totalSupply)
+        ERC20("Muthoot Finance Oct 2026 Bond", "MFRL-OCT26")
+        Ownable(_spvTreasury)
+    {
         // The SPV is set as the owner of the contract via Ownable(_spvTreasury)
         _mint(_spvTreasury, _totalSupply);
         isWhitelisted[_spvTreasury] = true; // Automatically whitelist the SPV
