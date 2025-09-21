@@ -11,48 +11,6 @@ The tokenization process bridges the traditional financial world with the blockc
 
 ![Tokenization Architecture](docs/architecture.png)
 
-### Architecture Components
-
-**Real World Legal & Trust**
-- **Muthoot Finance Ltd.**  
-  - Issuer
-  - Issues Bond
-  - Pays Coupons/Principal
-
-- **Bond Registry**  
-  - KFin Technologies/Link Intime
-  - Records SPV as Legal Owner
-
-- **RBI & SEBI**  
-  - Regulators
-  - Governs & Oversees
-
-- **Custodian Bank**  
-  - Holds Certificate
-  - Holds Bond for SPV
-
-**Special Purpose Vehicle**
-- **SPV Trust/Company**  
-  - Legal Owner of Bond
-  - The Legal Bridge
-
-**Blockchain Digital Ecosystem**
-- **KYC/AML Provider**  
-  - NSDL e-Gov, Karza
-  - Provides On-Chain Verification
-
-- **Smart Contracts**  
-  - MFRL-OCT26 Token & Bond Logic
-  - Manages Transfers
-  - Distributes Payments
-
-- **Whitelisted Investor Wallets**  
-  - Hold Tokenized Bonds
-  - Trade Tokens
-
-- **ATS Trading Platform**  
-  - For Secondary Trading
-  - Settles Trades
 
 ## 🚀 Key Features
 
