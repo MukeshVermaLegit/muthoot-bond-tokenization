@@ -59,7 +59,5 @@ The tokenization process bridges the traditional financial world with the blockc
 - **Regulatory Compliance:** On-chain whitelisting for KYC/AML enforcement
 - **SPV Structure:** Legal bridge between traditional finance and blockchain
 - **Automated Distributions:** Smart contract-based coupon payments
-- **Secondary Trading:** Prepared for regulated ATS integration
 - **Comprehensive Testing:** Full test suite with Foundry
 
-## 📁 Project Structure
